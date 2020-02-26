@@ -19,6 +19,7 @@ LINE_COLOURS = {
     'waterloo-city': '76d0bd',
 }
 
+
 STATUS_EMOJI = {
     2: ':no_entry:',  # Suspended
     3: ':no_entry:',  # Part Suspended
@@ -39,7 +40,7 @@ def respond(err, res=None):
     }
 
 
-def lambda_handler(event, context):
+def request_handler(request):
     conn = http.client.HTTPSConnection('api.tfl.gov.uk')
     conn.request('GET', '/Line/Mode/tube%2Cdlr%2Ctflrail%2Coverground/Status')
     response = conn.getresponse()
